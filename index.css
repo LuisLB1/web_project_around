@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .page {
     background-color: black;
     width: 100%;
@@ -27,8 +28,56 @@ width: 880px;
 .main__profile {
     width: 880px;
     height: 120px;
+    display: flex;
+    flex-direction: row;
     
 }
 .main__profile-image {
     height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.main__profile-info {
+    width: 415px;
+    height: 77px;
+    padding-top: 22px;
+    padding-bottom: 21px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.main__profile-info-image {
+    width: 373px;
+    height: 39px;
+}
+.main__profile-info-text {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+.main__profile-button {
+    background-color: black;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18px;
+    margin-top: 7px;
+}
+.main__profile-button-image {
+    width: 24px;
+    height: 24px;
+   object-fit: contain;
+}
+.main__add-button{
+    width: 150px;
+    height: 50px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+.main__add-button-image {
+
 }
