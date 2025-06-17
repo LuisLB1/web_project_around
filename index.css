@@ -75,9 +75,20 @@ width: 880px;
 .main__add-button{
     width: 150px;
     height: 50px;
-    padding-top: 35px;
-    padding-bottom: 35px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 165px;
+    background-color: black;
+    border: 2px solid #FFFFFF;
 }
-.main__add-button-image {
+.main__grid {
+    width: 880px;
+    height: 743px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 
+}
+.main__grid-elements {
+    
 }
