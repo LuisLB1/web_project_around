@@ -135,3 +135,51 @@ font-weight: 400;
 font-size: 18px;
 color: #545454;
 }
+
+/*Popup*/
+
+.popup {
+    width: 430px;
+    height: 330px;
+    background-color: white;
+    border-radius: 10px;
+    
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popup__title-container {
+    width: 358px;
+    height: 25px;
+    margin-top: 34px;
+}
+.popup__title {
+font-family: Inter;
+font-weight: 900;
+font-size: 24px;
+margin: 0;
+}
+.popup__name {
+    color:  #C4C4C4;
+width: 358px;
+height: 27px;
+margin-top: 54px;
+border: none;
+outline: none;
+}
+.popup__text {
+    color:  #C4C4C4;
+width: 358px;
+height: 27px;
+margin-top: 28px;
+border: none;
+outline: none;
+}
+.popup__button {
+    background-color: #fff;
+    color:  #C4C4C4;
+width: 358px;
+height: 50px;
+margin-top: 48px;
+border: 1px solid #C4C4C4;
+}
