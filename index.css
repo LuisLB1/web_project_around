@@ -70,11 +70,14 @@ width: 880px;
     align-items: center;
     margin-left: 18px;
     margin-top: 7px;
+    cursor: pointer;
+    z-index: 10;
 }
 .main__profile-button-image {
     width: 24px;
     height: 24px;
    object-fit: contain;
+   z-index: 9;
 }
 .main__add-button{
     width: 150px;
@@ -138,15 +141,37 @@ color: #545454;
 
 /*Popup*/
 
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+     background-color: rgba(0, 0, 0, 0.6);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    z-index: 1000;
+    display: none;
+}
 .popup {
+    position: relative;
     width: 430px;
     height: 330px;
     background-color: white;
     border-radius: 10px;
-    
      display: flex;
     flex-direction: column;
     align-items: center;
+}
+.popup-close {
+    cursor: pointer;
+    border: none;
+    z-index: 900;
+    background-color: transparent;
+position: absolute;
+top: -35px;
+right: -40px;
 }
 .popup__title-container {
     width: 358px;
@@ -160,7 +185,7 @@ font-size: 24px;
 margin: 0;
 }
 .popup__name {
-    color:  #C4C4C4;
+    color:  #000000;
 width: 358px;
 height: 27px;
 margin-top: 54px;
@@ -168,7 +193,7 @@ border: none;
 outline: none;
 }
 .popup__text {
-    color:  #C4C4C4;
+    color:  #000000;
 width: 358px;
 height: 27px;
 margin-top: 28px;
@@ -176,6 +201,7 @@ border: none;
 outline: none;
 }
 .popup__button {
+    cursor: pointer;
     background-color: #fff;
     color:  #C4C4C4;
 width: 358px;

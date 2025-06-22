@@ -18,7 +18,7 @@
         <div class="main__profile-info">
             <div>
             <img class="main__profile-info-image" src="./images/Jacques Cousteau.png">
-            <p class="main__profile-info-text">Explorador</p>
+            <p id="acercaDemi" class="main__profile-info-text">Explorador</p>
             </div>
             <button id="editarperfil" class="main__profile-button">
                 <img class="main__profile-button-image" src="./images/Edit Button.png">
@@ -77,19 +77,24 @@
     <footer class="footer">
         <p class="footer__text">© 2024 Around The U.S.</p>
     </footer>
+        </div>
+    </div>
 
+    <div class="popup-overlay">
       <div class="popup">
+        <button class="popup-close">
+            <img src="/images/Close Icon.png" alt="close-icon">
+        </button>
         <div class="popup__title-container">
         <h2 class="popup__title">Editar perfil</h2>
         </div>
             <input class="popup__name" type="text" placeholder="Nombre">
-            <input class="popup__text" type="text" placeholder="Acerca de mi">
+            <input id="acercaDemipopup" class="popup__text" type="text" placeholder="Acerca de mi">
             <button class="popup__button">Guardar</button>
             
       </div>
+   </div>
 
-        </div>
-    </div>
     <script src="/index.js"></script>
 </body>
 </html>
