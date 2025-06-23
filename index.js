@@ -22,4 +22,12 @@ const nuevoNombre = inputAcercademi.value.trim();
 pAcercademi.textContent = nuevoNombre || "Explorador" ;
 });
 
+const nameAuthor = document.getElementById('nameJ');
+const popupName = document.getElementById('inputName');
+ 
+popupName.addEventListener("input", function() {
+const newName = popupName.value.trim();
+nameAuthor.textContent = newName || "Jacques Cousteau";
+});
+
 });
