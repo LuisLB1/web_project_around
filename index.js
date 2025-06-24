@@ -30,4 +30,6 @@ const newName = popupName.value.trim();
 nameAuthor.textContent = newName || "Jacques Cousteau";
 });
 
+/**/
+
 });
