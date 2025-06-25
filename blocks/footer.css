@@ -1,0 +1,11 @@
+.footer {
+    width: 880px;
+}
+.footer__text {
+margin-top: 67px;
+margin-bottom: 60px;
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+color: #545454;
+}
