@@ -1,6 +1,7 @@
 .main {
 width: 880px;
 }
+
 .main__profile {
     width: 880px;
     height: 120px;
@@ -103,4 +104,53 @@ margin: 0;
    width: 21px;
    height: 19px;
    
+}
+@media screen and (max-width: 920px){
+
+ .main {
+    width: 580px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+ }
+    .main__profile {
+        width: 100%;
+        height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+    .main__profile-image {
+        height: 120px;
+        width: 120px;
+    }
+    .main__add-button {
+        margin: 0;
+    }
+   .prueba1 {
+    display: flex;
+    justify-content: center;
+   }
+   .main__profile-info-text {
+    display: flex;
+    justify-content: center;
+
+    
+   }
+   .main__add-button {
+    width: 282px;
+    margin-top: 36px;
+   }
+   /**/
+    .main__grid {
+        width: auto;
+        height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 17px;
+        
+    }
 }
