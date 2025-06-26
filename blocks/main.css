@@ -21,6 +21,10 @@ width: 880px;
     padding-bottom: 21px;
     padding-left: 30px;
     display: flex;
+    flex-direction: column;
+}
+.prueba1 {
+    display: flex;
     flex-direction: row;
 }
 .main__author {
@@ -37,6 +41,7 @@ width: 880px;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 400;
+    margin-top: 16px;
 }
 .main__profile-button {
     background-color: black;
@@ -47,7 +52,7 @@ width: 880px;
     justify-content: center;
     align-items: center;
     margin-left: 18px;
-    margin-top: 7px;
+    margin-top: 15px;
     cursor: pointer;
     z-index: 10;
 }
@@ -123,6 +128,14 @@ margin: 0;
     justify-content: center;
     align-items: center;
  }
+ .main__profile-info {
+    width: 580px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: 30px;
+ }
     .main__profile-image {
         height: 120px;
         width: 120px;
@@ -133,11 +146,6 @@ margin: 0;
    .prueba1 {
     display: flex;
     justify-content: center;
-   }
-   .main__profile-info-text {
-    display: flex;
-    justify-content: center;
-
     
    }
    .main__add-button {
