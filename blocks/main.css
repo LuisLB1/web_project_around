@@ -172,5 +172,8 @@ margin: 0;
         font-size: 14px;
         margin-top: 10px;
     } 
-    
+    .main__grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
 }

@@ -66,3 +66,37 @@ height: 50px;
 margin-top: 48px;
 border: 1px solid #C4C4C4;
 }
+@media screen and (max-width: 650px){
+.popup {
+    width: 282px;
+    height: 322px;
+}
+.popup-close {
+right: 10px;
+top: -50px;
+width: 26px;
+height: 26px;
+}
+.popup__title-container {
+    width: 238px;
+    height: 22px;
+    margin-top: 25px;
+}
+.popup__title {
+    font-size: 18px;
+}
+.popup__name {
+    width: 238px;
+    height: 26px;
+}
+.popup__text {
+    width: 238px;
+    height: 26px;
+
+}
+.popup__button {
+    width: 238px;
+    height: 46px;
+}
+
+}
