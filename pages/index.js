@@ -13,6 +13,16 @@ const popupName = document.getElementById('inputName');
 
 const btnGuardar = document.getElementById('guardarBtn');
 
+const botonesCorazon = document.querySelectorAll('.corazon-img');
+
+
+botonesCorazon.forEach(boton => {
+boton.addEventListener('click', function () {
+  boton.classList.toggle('activo');
+  });
+});
+ 
+
 function validarCampos() {
     const nombreLleno = popupName.value.trim() !== "";
     const textoLleno = inputAcercademi.value.trim() !== "";
@@ -24,6 +34,7 @@ function validarCampos() {
     }
 }
 
+
 inputAcercademi.addEventListener("input", validarCampos);
 popupName.addEventListener("input", validarCampos);
 
@@ -33,6 +44,7 @@ overlayPopup.style.display = "flex";
 closePopup.addEventListener("click", function() {
 overlayPopup.style.display = "none";
 });
+
 
 btnGuardar.addEventListener("click", function(){
     const nuevoNombre = popupName.value.trim();

@@ -116,8 +116,26 @@ margin: 0;
    margin-top: 5px;
    width: 21px;
    height: 19px;
-   
 }
+.corazon-img {
+    margin-top: 5px;
+    width: 21px;
+   height: 19px;
+    background-image: url(/images/image-corazon.png);
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+.corazon-img:hover {
+    filter: brightness(70%);
+}
+.corazon-img.activo {
+    background-image: url(/images/blackco.png);
+}
+     
+
 @media screen and (max-width: 920px){
 
  .main {
