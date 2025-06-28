@@ -13,6 +13,20 @@ const popupName = document.getElementById('inputName');
 
 const btnGuardar = document.getElementById('guardarBtn');
 
+function validarCampos() {
+    const nombreLleno = popupName.value.trim() !== "";
+    const textoLleno = inputAcercademi.value.trim() !== "";
+
+    if (nombreLleno && textoLleno){
+        btnGuardar.classList.add("activo");
+    } else {
+        btnGuardar.classList.remove("activo");
+    }
+}
+
+inputAcercademi.addEventListener("input", validarCampos);
+popupName.addEventListener("input", validarCampos);
+
 openPopup.addEventListener("click", function() {
 overlayPopup.style.display = "flex";
 });

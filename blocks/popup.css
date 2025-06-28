@@ -30,6 +30,9 @@ position: absolute;
 top: -35px;
 right: -40px;
 }
+.popup-close:hover {
+filter: brightness(60%);
+} 
 .popup__title-container {
     width: 358px;
     height: 25px;
@@ -60,11 +63,20 @@ outline: none;
 .popup__button {
     cursor: pointer;
     background-color: #fff;
+    transition: background-color 0.3s ease;
     color:  #C4C4C4;
 width: 358px;
 height: 50px;
 margin-top: 48px;
 border: 1px solid #C4C4C4;
+}
+.popup__button:hover {
+    background-color: #3f3f3f;
+}
+#guardarBtn.activo {
+  background-color: #000;
+  color: white;
+  cursor: pointer;
 }
 @media screen and (max-width: 650px){
 .popup {
