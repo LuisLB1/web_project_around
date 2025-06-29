@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 const openPopup = document.querySelector('.main__profile-button');
-const closePopup = document.querySelector('.popup-close');
+const closePopup = document.querySelector('.popup__close');
 const overlayPopup = document.querySelector('.popup-overlay');
 
 
