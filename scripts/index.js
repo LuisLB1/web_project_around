@@ -54,8 +54,22 @@ btnGuardar.addEventListener("click", function(){
     pAcercademi.textContent = nuevoTexto || "Explorador";
 
     overlayPopup.style.display = "none";
+});
 
 
-})
+
+/**/
+const openButton = document.querySelector(".main__add-button");
+
+openButton.addEventListener("click", function(){
+const template = document.getElementById('popup-template');
+const templateClone = template.content.cloneNode(true);
+
+templateClone.querySelector(".popup2__close").addEventListener("click", function(){
+this.closest(".popup-overlay2").remove();
+});
+document.body.appendChild(templateClone);
+});
+
 
 });

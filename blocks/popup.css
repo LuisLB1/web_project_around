@@ -78,12 +78,104 @@ border: 1px solid #C4C4C4;
   color: white;
   cursor: pointer;
 }
+
+/* Segundo Popup */
+
+.popup-overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+     background-color: rgba(0, 0, 0, 0.6);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    z-index: 999;
+}
+.popup2 {
+    position: relative;
+    width: 430px;
+    height: 330px;
+    background-color: white;
+    border-radius: 10px;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popup2__close {
+    cursor: pointer;
+    border: none;
+    z-index: 900;
+    background-color: transparent;
+position: absolute;
+top: -35px;
+right: -40px;
+}
+.popup2__close:hover{
+    filter: brightness(60%);
+}
+.popup2__title-container {
+     width: 358px;
+    height: 25px;
+    margin-top: 34px;
+}
+.popup2__title{
+    font-family: Inter;
+font-weight: 900;
+font-size: 24px;
+margin: 0;
+}
+.popup2__name {
+    color:  #000000;
+width: 358px;
+height: 27px;
+margin-top: 54px;
+border: none;
+outline: none;
+}
+.popup2__text {
+     color:  #000000;
+width: 358px;
+height: 27px;
+margin-top: 28px;
+border: none;
+outline: none;
+}
+.popup2__button {
+     cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+    color:  #C4C4C4;
+width: 358px;
+height: 50px;
+margin-top: 48px;
+border: 1px solid #C4C4C4;
+}
+.popup2__button:hover {
+    background-color: #3f3f3f;
+}
+#guardarBtn2.activo {
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+}
 @media screen and (max-width: 650px){
 .popup {
     width: 282px;
     height: 322px;
 }
+.popup2 {
+    width: 282px;
+    height: 322px;
+}
 .popup-close {
+right: 10px;
+top: -50px;
+width: 26px;
+height: 26px;
+}
+.popup2-close {
 right: 10px;
 top: -50px;
 width: 26px;
@@ -94,10 +186,22 @@ height: 26px;
     height: 22px;
     margin-top: 25px;
 }
+.popup2__title-container {
+    width: 238px;
+    height: 22px;
+    margin-top: 25px;
+}
 .popup__title {
     font-size: 18px;
 }
+.popup2__title {
+    font-size: 18px;
+}
 .popup__name {
+    width: 238px;
+    height: 26px;
+}
+.popup2__name {
     width: 238px;
     height: 26px;
 }
@@ -106,9 +210,17 @@ height: 26px;
     height: 26px;
 
 }
+.popup2__text {
+    width: 238px;
+    height: 26px;
+
+}
 .popup__button {
     width: 238px;
     height: 46px;
 }
-
+.popup2__button {
+    width: 238px;
+    height: 46px;
+}
 }
