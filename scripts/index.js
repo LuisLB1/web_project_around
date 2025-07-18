@@ -60,16 +60,45 @@ btnGuardar.addEventListener("click", function(){
 
 /**/
 const openButton = document.querySelector(".main__add-button");
-
+/*Funcion principal para abrir y cerrar el popup*/
 openButton.addEventListener("click", function(){
+    /*Seleccionamos y clonamos el template del popop*/
 const template = document.getElementById('popup-template');
 const templateClone = template.content.cloneNode(true);
 
 templateClone.querySelector(".popup2__close").addEventListener("click", function(){
 this.closest(".popup-overlay2").remove();
 });
-document.body.appendChild(templateClone);
+
+/*Se selecionan los inputs del popup*/
+const btnCrear = templateClone.querySelector("#crear");
+const inputTitulo = templateClone.querySelector("#title");
+const inputUrl = templateClone.querySelector("#url");
+
+btnCrear.addEventListener("click", function(){
+const titulo = inputTitulo.value.trim();
+const imagenUrl = inputUrl.value.trim();
+
+if(!titulo || ! imagenUrl){
+    alert("Por favor completa ambos campos.");
+    return;
+};
+
+/*Tarjetas*/
+const tarjetaTemplate = document.getElementById('tarjetas-template');
+const tarjetaClone = tarjetaTemplate.content.cloneNode(true);
+
+tarjetaClone.querySelector("img").src = imagenUrl;
+tarjetaClone.querySelector(".main__grid-text").textContent = titulo;
+
+const contenedorTarjetas = document.querySelector(".main__grid");
+contenedorTarjetas.prepend(tarjetaClone);
+
+templateClone.remove();
 });
 
+
+document.body.appendChild(templateClone);
+});
 
 });

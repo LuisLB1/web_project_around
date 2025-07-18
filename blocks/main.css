@@ -96,6 +96,10 @@ width: 880px;
     
     
 }
+.main__template-images {
+     width: 282px;
+     height: 282px;
+}
 .main__text-and-vector {
     display: flex;
     flex-direction: row;
