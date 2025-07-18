@@ -81,7 +81,7 @@ width: 880px;
 }
 .main__grid {
     width: 880px;
-    height: 743px;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
