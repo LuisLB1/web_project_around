@@ -13,14 +13,21 @@ const popupName = document.getElementById('inputName');
 
 const btnGuardar = document.getElementById('guardarBtn');
 
-const botonesCorazon = document.querySelectorAll('.corazon-img');
+const contenedorTarjetas = document.querySelector(".main__grid");
 
-
-botonesCorazon.forEach(boton => {
-boton.addEventListener('click', function () {
-  boton.classList.toggle('activo');
-  });
+contenedorTarjetas.addEventListener("click", function(event) {
+  if (event.target.classList.contains("corazon-img")) {
+    event.target.classList.toggle("activo");
+  }
+ if (event.target.classList.contains("main__image-trash")) {
+    const tarjeta = event.target.closest(".main__grid-elements")
+if (tarjeta) {
+    tarjeta.remove();
+}
+ }
 });
+
+
  
 
 function validarCampos() {
@@ -95,6 +102,8 @@ const contenedorTarjetas = document.querySelector(".main__grid");
 contenedorTarjetas.prepend(tarjetaClone);
 
 templateClone.remove();
+
+
 });
 
 
