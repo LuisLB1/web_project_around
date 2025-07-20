@@ -106,7 +106,7 @@ border: 1px solid #C4C4C4;
 .popup2__close {
     cursor: pointer;
     border: none;
-    z-index: 900;
+    z-index: 1000;
     background-color: transparent;
 position: absolute;
 top: -35px;

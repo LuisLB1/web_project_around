@@ -34,7 +34,7 @@
       <div class="main__grid">
        <div class="main__grid-elements">
         <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
-        <img src="./images/grid-image-1.png" alt="grid-image">
+        <img class="place" src="./images/grid-image-1.png" alt="grid-image">
             <div class="main__text-and-vector">
               <p class="main__grid-text">Valle de Yosemite</p>
               <button class="corazon-img"></button>
@@ -42,7 +42,7 @@
        </div>
        <div class="main__grid-elements">
         <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
-        <img src="./images/grid-image-2.png" alt="grid-image">
+        <img class="place" src="./images/grid-image-2.png" alt="grid-image">
            <div class="main__text-and-vector">
               <p class="main__grid-text">Lago Louise</p>
               <button  class="corazon-img"></button>
@@ -50,7 +50,7 @@
        </div>
        <div class="main__grid-elements">
         <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
-        <img src="images/grid-image-3.png" alt="grid-image">
+        <img class="place" src="images/grid-image-3.png" alt="grid-image">
             <div class="main__text-and-vector">
               <p class="main__grid-text">Montañas Calvas</p>
               <button  class="corazon-img"></button>
@@ -58,7 +58,7 @@
        </div>
        <div class="main__grid-elements">
         <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
-        <img src="./images/grid-image-4.png" alt="grid-image">
+        <img class="place" src="./images/grid-image-4.png" alt="grid-image">
            <div class="main__text-and-vector">
               <p class="main__grid-text">Latemar</p>
               <button  class="corazon-img"></button>
@@ -66,7 +66,7 @@
        </div>
        <div class="main__grid-elements">
         <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
-        <img src="./images/grid-image-5.png" alt="img-grid">
+        <img class="place" src="./images/grid-image-5.png" alt="img-grid">
            <div class="main__text-and-vector">
               <p class="main__grid-text">Vanois National...</p>
               <button  class="corazon-img"></button>
@@ -74,7 +74,7 @@
        </div>
        <div class="main__grid-elements">
         <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
-        <img id="place" src="./images/grid-image-6.png" alt="img-grid">
+        <img class="place"  src="./images/grid-image-6.png" alt="img-grid">
            <div class="main__text-and-vector">
               <p class="main__grid-text">Lago di Braies</p>
               <button  class="corazon-img"></button>
@@ -122,7 +122,7 @@
 
 <template id="tarjetas-template">
    <div class="main__grid-elements">
-        <img id="place" class="main__template-images" src="" alt="grid-image">
+        <img  class="main__template-images place" src="" alt="grid-image">
             <div class="main__text-and-vector">
               <p class="main__grid-text"></p>
               <button  class="corazon-img"></button>
@@ -130,6 +130,17 @@
             <img class="main__image-trash" src="./images/Trash.png" alt="trashIcon">
        </div>
 </template>
+
+
+<div class="template__imagen-overlay">
+  <div class="template__container">
+  <img class="template__imagen-emergente" src="" alt="imagen-overlay">
+  <button id="cerrarImagen" class="popup__close">
+            <img class="popup__close-vector" src="/images/CloseIcon.png" alt="close-icon">
+        </button>
+  </div>
+</div>
+
 
     <script src="./scripts/index.js"></script>
 </body>

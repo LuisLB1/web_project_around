@@ -1,0 +1,24 @@
+.template__imagen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+     background-color: rgba(0, 0, 0, 0.6);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    z-index: 999;
+    display: none;
+}
+.template__imagen-emergente {
+    max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+.template__container {
+    position: relative;
+}
