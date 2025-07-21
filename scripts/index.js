@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       contenedorTarjetas.prepend(tarjetaClone);
 
-      templateClone.remove();
+      document.querySelector(".popup-overlay2").remove();
     });
 
     document.body.appendChild(templateClone);
