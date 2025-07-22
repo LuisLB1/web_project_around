@@ -210,6 +210,9 @@ margin: 0;
     }
 }
 @media screen and (max-width: 650px){
+    .main {
+        width: 100%;
+    }
     .main__author {
         font-weight: 500;
         font-size: 22px;
@@ -222,5 +225,8 @@ margin: 0;
     .main__grid {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(6, 1fr);
+    }
+    .main__profile-info {
+        width: 100%;
     }
 }
