@@ -1,0 +1,17 @@
+.popup__input_type_error {
+    border: 1px solid red;
+}
+.popup__error_visible{
+     color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+}
+.popup__button_disabled {
+     opacity: 0.5;
+  background-color: #ccc;  
+  color: #fff;
+  cursor: default;
+  pointer-events: none;
+}
