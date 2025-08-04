@@ -108,6 +108,7 @@
         </form>
       </div>
    </div>
+
 <template id="popup-template">
  <div class="popup-overlay2">
       <div class="popup2">
@@ -117,10 +118,17 @@
         <div class="popup2__title-container">
         <h2 class="popup2__title">Nuevo lugar</h2>
         </div>
-            <input id="title" class="popup2__name" type="text" placeholder="Título">
-            <input id="url" class="popup2__text" type="url" placeholder="Enlace a la imagen">
-            <button id="crear" class="popup2__button">Crear</button>
-            
+
+        <form class="popup__form" novalidate>
+            <input id="title" class="popup2__name popup__input" type="text" placeholder="Título" minlength="2" maxlength="30" required>
+            <span id="title-error" class="popup__error"></span>
+
+            <input id="url" class="popup2__text popup__input" type="url" placeholder="Enlace a la imagen" required>
+            <span id="url-error" class="popup__error"></span>
+
+            <button id="crear" class="popup2__button popup__button" type="submit" >Crear</button>
+        </form>   
+
       </div>
    </div>
 </template>

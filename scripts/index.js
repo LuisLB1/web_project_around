@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const openPopup = document.querySelector('.main__profile-button');
   const closePopup = document.querySelector('.popup__close');
   const overlayPopup = document.querySelector('.popup-overlay');
@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const imagenEmergente = overlayImagen.querySelector(".template__imagen-emergente");
   const btnCerrarImagen = overlayImagen.querySelector("#cerrarImagen");
 
-  //Manejo de clicks dentro de las tarjetas
-  contenedorTarjetas.addEventListener("click", function(event) {
+  
+  contenedorTarjetas.addEventListener("click", function (event) {
     if (event.target.classList.contains("corazon-img")) {
       event.target.classList.toggle("activo");
     }
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  btnCerrarImagen.addEventListener("click", function() {
+  btnCerrarImagen.addEventListener("click", function () {
     overlayImagen.style.display = "none";
     imagenEmergente.src = "";
   });
@@ -53,15 +53,19 @@ document.addEventListener("DOMContentLoaded", function() {
   inputAcercademi.addEventListener("input", validarCampos);
   popupName.addEventListener("input", validarCampos);
 
-  openPopup.addEventListener("click", function() {
+  openPopup.addEventListener("click", function () {
     overlayPopup.style.display = "flex";
   });
 
-  closePopup.addEventListener("click", function() {
+  closePopup.addEventListener("click", function () {
     overlayPopup.style.display = "none";
   });
 
-  btnGuardar.addEventListener("click", function() {
+  const formEditarPerfil = document.querySelector(".popup__form");
+
+  formEditarPerfil.addEventListener("submit", function (event) {
+    event.preventDefault();
+
     const nuevoNombre = popupName.value.trim();
     const nuevoTexto = inputAcercademi.value.trim();
 
@@ -73,11 +77,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const openButton = document.querySelector(".main__add-button");
 
-  openButton.addEventListener("click", function() {
+  openButton.addEventListener("click", function () {
     const template = document.getElementById('popup-template');
     const templateClone = template.content.cloneNode(true);
 
-    templateClone.querySelector(".popup2__close").addEventListener("click", function() {
+    const overlay = templateClone.querySelector(".popup-overlay2");
+
+    
+    overlay.addEventListener("click", function (event) {
+      if (event.target === overlay) {
+        overlay.remove();
+      }
+    });
+
+  
+    templateClone.querySelector(".popup2__close").addEventListener("click", function () {
       this.closest(".popup-overlay2").remove();
     });
 
@@ -85,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputTitulo = templateClone.querySelector("#title");
     const inputUrl = templateClone.querySelector("#url");
 
-    btnCrear.addEventListener("click", function() {
+    btnCrear.addEventListener("click", function () {
       const titulo = inputTitulo.value.trim();
       const imagenUrl = inputUrl.value.trim();
 
@@ -102,9 +116,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
       contenedorTarjetas.prepend(tarjetaClone);
 
-      document.querySelector(".popup-overlay2").remove();
+      overlay.remove();
     });
 
     document.body.appendChild(templateClone);
+
+    const nuevoForm = overlay.querySelector(".popup__form");
+    setEventListeners(nuevoForm, validationConfig);
   });
+
+  cerrarOverlay(".popup-overlay");
+  cerrarOverlay(".template__imagen-overlay");
+  habilitarCierrePorEsc(".popup-overlay, .popup-overlay2, .template__imagen-overlay");
 });
+
+function cerrarOverlay(overlaySelector) {
+  const overlay = document.querySelector(overlaySelector);
+  if (!overlay) return;
+
+  overlay.addEventListener("click", function (event) {
+    if (event.target === overlay) {
+      overlay.style.display = "none";
+    }
+  });
+}
+
+function habilitarCierrePorEsc(selectoresOverlay){
+  document.addEventListener("keydown", function(event){
+if(event.key === "Escape"){
+  const overlays = document.querySelectorAll(selectoresOverlay);
+
+  overlays.forEach((overlay)=>{
+    const estilo = getComputedStyle(overlay);
+     if(estilo.display !== "none"){
+
+      if(overlay.classList.contains(".popup-overlay2")){
+        overlay.remove();
+      } else {
+        overlay.style.display = "none";
+      }
+     }
+  });
+}
+  });
+}
+
