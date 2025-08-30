@@ -1,163 +1,157 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const openPopup = document.querySelector('.main__profile-button');
-  const closePopup = document.querySelector('.popup__close');
-  const overlayPopup = document.querySelector('.popup-overlay');
 
-  const inputAcercademi = document.getElementById('acercaDemipopup');
-  const pAcercademi = document.getElementById('acercaDemi');
+
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+import {
+  abrirOverlay,
+  cerrarOverlay,
+  cerrarOverlayAlClickFondo,
+  habilitarCierrePorEsc,
+  prepararOverlay,
+} from './utils.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+ 
+  const btnAbrirPerfil = document.querySelector('.main__profile-button');
+  const overlayPerfil = document.querySelector('.popup-overlay');
+  const btnCerrarPerfil = overlayPerfil?.querySelector('.popup__close');
+
+  const formEditarPerfil = overlayPerfil?.querySelector('.popup__form');
+  const inputNombre = overlayPerfil?.querySelector('#inputName');
+  const inputAcercaDeMi = overlayPerfil?.querySelector('#acercaDemipopup');
 
   const nameAuthor = document.getElementById('nameJ');
-  const popupName = document.getElementById('inputName');
+  const pAcercaDeMi = document.getElementById('acercaDemi');
 
-  const btnGuardar = document.getElementById('guardarBtn');
-
-  const contenedorTarjetas = document.querySelector(".main__grid");
-
-  const overlayImagen = document.querySelector(".template__imagen-overlay");
-  const imagenEmergente = overlayImagen.querySelector(".template__imagen-emergente");
-  const btnCerrarImagen = overlayImagen.querySelector("#cerrarImagen");
+  const contenedorTarjetas = document.querySelector('.main__grid');
+  const btnAbrirNuevoLugar = document.querySelector('.main__add-button');
 
   
-  contenedorTarjetas.addEventListener("click", function (event) {
-    if (event.target.classList.contains("corazon-img")) {
-      event.target.classList.toggle("activo");
-    }
-    if (event.target.classList.contains("main__image-trash")) {
-      const tarjeta = event.target.closest(".main__grid-elements");
-      if (tarjeta) {
-        tarjeta.remove();
-      }
-    }
-    if (event.target.classList.contains("place")) {
-      imagenEmergente.src = event.target.src;
-      overlayImagen.style.display = "flex";
-    }
-  });
+  const overlayImagen = document.querySelector('.template__imagen-overlay');
+  const imagenEmergente = overlayImagen?.querySelector('.template__imagen-emergente');
+  const btnCerrarImagen = overlayImagen?.querySelector('#cerrarImagen');
 
-  btnCerrarImagen.addEventListener("click", function () {
-    overlayImagen.style.display = "none";
-    imagenEmergente.src = "";
-  });
+  
+  const popupNuevoLugarTemplate = document.getElementById('popup-template');
+  
+  const tarjetaTemplateSelector = '#tarjetas-template';
 
-  function validarCampos() {
-    const nombreLleno = popupName.value.trim() !== "";
-    const textoLleno = inputAcercademi.value.trim() !== "";
-
-    if (nombreLleno && textoLleno) {
-      btnGuardar.classList.add("activo");
-    } else {
-      btnGuardar.classList.remove("activo");
-    }
+  
+  function handleImagePreview(link ) {
+    if (!overlayImagen || !imagenEmergente) return;
+    imagenEmergente.src = link;
+    abrirOverlay(overlayImagen);
   }
 
-  inputAcercademi.addEventListener("input", validarCampos);
-  popupName.addEventListener("input", validarCampos);
-
-  openPopup.addEventListener("click", function () {
-    overlayPopup.style.display = "flex";
+  
+  prepararOverlay(overlayImagen, btnCerrarImagen, () => {
+    if (imagenEmergente) imagenEmergente.src = '';
   });
 
-  closePopup.addEventListener("click", function () {
-    overlayPopup.style.display = "none";
-  });
-
-  const formEditarPerfil = document.querySelector(".popup__form");
-
-  formEditarPerfil.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const nuevoNombre = popupName.value.trim();
-    const nuevoTexto = inputAcercademi.value.trim();
-
-    nameAuthor.textContent = nuevoNombre || "Jacques Cousteau";
-    pAcercademi.textContent = nuevoTexto || "Explorador";
-
-    overlayPopup.style.display = "none";
-  });
-
-  const openButton = document.querySelector(".main__add-button");
-
-  openButton.addEventListener("click", function () {
-    const template = document.getElementById('popup-template');
-    const templateClone = template.content.cloneNode(true);
-
-    const overlay = templateClone.querySelector(".popup-overlay2");
-
-    
-    overlay.addEventListener("click", function (event) {
-      if (event.target === overlay) {
-        overlay.remove();
-      }
-    });
+ 
+  const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible',
+  };
 
   
-    templateClone.querySelector(".popup2__close").addEventListener("click", function () {
-      this.closest(".popup-overlay2").remove();
-    });
+  let perfilValidator = null;
+  if (formEditarPerfil) {
+    perfilValidator = new FormValidator(validationConfig, formEditarPerfil);
+    perfilValidator.enableValidation();
+  }
 
-    const btnCrear = templateClone.querySelector("#crear");
-    const inputTitulo = templateClone.querySelector("#title");
-    const inputUrl = templateClone.querySelector("#url");
+ 
+  btnAbrirPerfil?.addEventListener('click', () => {
+    
+    if (inputNombre) inputNombre.value = nameAuthor?.textContent?.trim() || '';
+    if (inputAcercaDeMi) inputAcercaDeMi.value = pAcercaDeMi?.textContent?.trim() || '';
+    
+    perfilValidator?.resetValidation?.();
+    abrirOverlay(overlayPerfil);
+  });
 
-    btnCrear.addEventListener("click", function () {
+  prepararOverlay(overlayPerfil, btnCerrarPerfil);
+
+  formEditarPerfil?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nuevoNombre = inputNombre?.value?.trim();
+    const nuevoTexto = inputAcercaDeMi?.value?.trim();
+
+    if (nameAuthor) nameAuthor.textContent = nuevoNombre || 'Jacques Cousteau';
+    if (pAcercaDeMi) pAcercaDeMi.textContent = nuevoTexto || 'Explorador';
+
+    cerrarOverlay(overlayPerfil);
+  });
+
+  habilitarCierrePorEsc('.popup-overlay, .popup-overlay2, .template__imagen-overlay');
+
+ 
+  const datosIniciales = Array.from(
+    contenedorTarjetas.querySelectorAll('.main__grid-elements')
+  ).map((el) => {
+    const img = el.querySelector('img.place');
+    const title = el.querySelector('.main__grid-text');
+    return {
+      name: title?.textContent?.trim() || '',
+      link: img?.getAttribute('src') || '',
+    };
+  });
+
+  
+  contenedorTarjetas.innerHTML = '';
+
+ 
+  datosIniciales.forEach((data) => {
+    const card = new Card(data, tarjetaTemplateSelector, handleImagePreview);
+    contenedorTarjetas.appendChild(card.getView());
+  });
+
+
+  btnAbrirNuevoLugar?.addEventListener('click', () => {
+    if (!popupNuevoLugarTemplate) return;
+
+    
+    const clone = popupNuevoLugarTemplate.content.cloneNode(true);
+    const overlayNuevo = clone.querySelector('.popup-overlay2');
+    const btnCerrarNuevo = clone.querySelector('.popup2__close');
+    const formNuevoLugar = clone.querySelector('.popup__form');
+    const inputTitulo = clone.querySelector('#title');
+    const inputUrl = clone.querySelector('#url');
+
+    if (!overlayNuevo || !formNuevoLugar || !inputTitulo || !inputUrl) return;
+
+    
+    prepararOverlay(overlayNuevo, btnCerrarNuevo, () => overlayNuevo.remove());
+
+    
+    const nuevoLugarValidator = new FormValidator(validationConfig, formNuevoLugar);
+    nuevoLugarValidator.enableValidation();
+    nuevoLugarValidator.resetValidation?.();
+
+    
+    formNuevoLugar.addEventListener('submit', (e) => {
+      e.preventDefault();
       const titulo = inputTitulo.value.trim();
-      const imagenUrl = inputUrl.value.trim();
+      const url = inputUrl.value.trim();
 
-      if (!titulo || !imagenUrl) {
-        alert("Por favor completa ambos campos.");
-        return;
-      }
+      
+      const nuevaCard = new Card(
+        { name: titulo, link: url },
+        tarjetaTemplateSelector,
+        handleImagePreview
+      );
+      contenedorTarjetas.prepend(nuevaCard.getView());
 
-      const tarjetaTemplate = document.getElementById('tarjetas-template');
-      const tarjetaClone = tarjetaTemplate.content.cloneNode(true);
-
-      tarjetaClone.querySelector("img").src = imagenUrl;
-      tarjetaClone.querySelector(".main__grid-text").textContent = titulo;
-
-      contenedorTarjetas.prepend(tarjetaClone);
-
-      overlay.remove();
+      overlayNuevo.remove();
     });
 
-    document.body.appendChild(templateClone);
-
-    const nuevoForm = overlay.querySelector(".popup__form");
-    setEventListeners(nuevoForm, validationConfig);
+    
+    document.body.appendChild(clone);
   });
-
-  cerrarOverlay(".popup-overlay");
-  cerrarOverlay(".template__imagen-overlay");
-  habilitarCierrePorEsc(".popup-overlay, .popup-overlay2, .template__imagen-overlay");
 });
-
-function cerrarOverlay(overlaySelector) {
-  const overlay = document.querySelector(overlaySelector);
-  if (!overlay) return;
-
-  overlay.addEventListener("click", function (event) {
-    if (event.target === overlay) {
-      overlay.style.display = "none";
-    }
-  });
-}
-
-function habilitarCierrePorEsc(selectoresOverlay){
-  document.addEventListener("keydown", function(event){
-if(event.key === "Escape"){
-  const overlays = document.querySelectorAll(selectoresOverlay);
-
-  overlays.forEach((overlay)=>{
-    const estilo = getComputedStyle(overlay);
-     if(estilo.display !== "none"){
-
-      if(overlay.classList.contains(".popup-overlay2")){
-        overlay.remove();
-      } else {
-        overlay.style.display = "none";
-      }
-     }
-  });
-}
-  });
-}
 
