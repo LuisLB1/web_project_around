@@ -1,49 +1,41 @@
 
 export default class Card {
-  
-  #name;             
-  #link;              
-  #templateSelector;  
-  #onPreview;         
+  #name;
+  #link;
+  #templateSelector;
+  #handleCardClick;
 
-  #element;           
-  #likeButton;        
-  #deleteButton;     
-  #image;             
-  #title;             
+  #element;
+  #likeButton;
+  #deleteButton;
+  #image;
+  #title;
 
-  
-  constructor(data, templateSelector, onPreview) {
-    
-    this.#name = data.name;
-    this.#link = data.link;
+  constructor(data, templateSelector, handleCardClick) {
+    this.#name = String(data?.name ?? '').trim();
+    this.#link = String(data?.link ?? '').trim();
     this.#templateSelector = templateSelector;
-    this.#onPreview = onPreview;
+    this.#handleCardClick = handleCardClick;
 
-    
     this.#element = this.#getTemplate();
     this.#likeButton = this.#element.querySelector('.corazon-img');
     this.#deleteButton = this.#element.querySelector('.main__image-trash');
-   
     this.#image = this.#element.querySelector('img.place');
     this.#title = this.#element.querySelector('.main__grid-text');
 
-   
-    this.#title.textContent = this.#name;
-    this.#image.src = this.#link;
-    
-    this.#image.alt = `Imagen de ${this.#name}`;
+    if (this.#title) this.#title.textContent = this.#name;
+    if (this.#image) {
+      this.#image.src = this.#link || '';
+      this.#image.alt = `Imagen de ${this.#name}`;
+    }
 
-    
     this.#setEventListeners();
   }
 
- 
   getView() {
     return this.#element;
   }
 
- 
   #getTemplate() {
     const template = document.querySelector(this.#templateSelector);
     if (!template) {
@@ -57,39 +49,40 @@ export default class Card {
     return root;
   }
 
- 
   #setEventListeners() {
-    
     if (this.#likeButton) {
-      this.#likeButton.addEventListener('click', () => this.#handleLike());
+      this.#likeButton.addEventListener('click', (e) => {
+        e.preventDefault?.();
+        this.#handleLike();
+      });
     }
-
-    
     if (this.#deleteButton) {
-      this.#deleteButton.addEventListener('click', () => this.#handleDelete());
+      this.#deleteButton.addEventListener('click', (e) => {
+        e.preventDefault?.();
+        this.#handleDelete();
+      });
     }
-
-    
     if (this.#image) {
-      this.#image.addEventListener('click', () => this.#handlePreview());
+      this.#image.addEventListener('click', () => {
+        this.#handlePreview();
+      });
     }
   }
 
-  
   #handleLike() {
-    this.#likeButton.classList.toggle('activo');
+    this.#likeButton?.classList.toggle('activo');
   }
-
 
   #handleDelete() {
     this.#element.remove();
-    
+    this.#element = null;
   }
 
-
   #handlePreview() {
-    if (typeof this.#onPreview === 'function') {
-      this.#onPreview(this.#link, this.#name);
+    
+    if (typeof this.#handleCardClick === 'function') {
+      this.#handleCardClick(this.#link, this.#name);
     }
   }
 }
+

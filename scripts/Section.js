@@ -1,19 +1,24 @@
+
 export default class Section {
+  constructor({ items = [], renderer }, containerSelector) {
+    if (typeof renderer !== 'function') {
+      throw new Error('Section: renderer debe ser una función');
+    }
+    this._items = items;
+    this._renderer = renderer;
+    this._container = document.querySelector(containerSelector);
+    if (!this._container) {
+      throw new Error(`Section: no se encontró el contenedor ${containerSelector}`);
+    }
+  }
 
-    constructor({ items, renderer }, containerSelector){
-  this._items = items;
-  this._renderer = renderer;
-  this._containerSelector = document.querySelector(containerSelector);
-    }
-    
-    rendererItems(){
-   this._items.forEach( item => {
-    const element = this._renderer(item);
-   this.addItem(element);
-   });
-    }
+  renderItems() {
+    this._items.forEach((item) => this._renderer(item));
+  }
 
-    addItem(){
-   this._containerSelector.append(element)
-    }
+  addItem(element, { prepend = false } = {}) {
+    if (!(element instanceof Element)) return;
+    prepend ? this._container.prepend(element) : this._container.append(element);
+  }
 }
+
